@@ -1,0 +1,86 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'org.jetbrains.kotlin.plugin.serialization'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+
+}
+
+android {
+    compileSdkVersion 32
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.nasaimage"
+        minSdkVersion 21
+        targetSdkVersion 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    viewBinding {
+        enabled = true
+    }
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.5.0'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+//    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.mockito:mockito-core:1.10.19'
+    testImplementation 'org.mockito:mockito-inline:2.13.0'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.3'
+    testImplementation "android.arch.core:core-testing:1.1.1"
+    testImplementation 'com.jraska.livedata:testing-ktx:1.1.2'
+
+    //Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+
+    //KTX
+    implementation "androidx.fragment:fragment-ktx:1.5.2"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
+
+    //KOIN DI
+    implementation "org.koin:koin-core:$koin_version"
+    implementation "org.koin:koin-android:$koin_version"
+    implementation "org.koin:koin-androidx-scope:$koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    implementation "org.koin:koin-androidx-fragment:$koin_version"
+
+    //JSON Serializer
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2"
+
+    //Lazy image loading
+    implementation 'com.github.bumptech.glide:glide:4.13.2'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
+    implementation 'com.github.bumptech.glide:annotations:4.13.2'
+    kapt 'com.github.bumptech.glide:compiler:4.13.2'
+}
